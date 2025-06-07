@@ -1,7 +1,7 @@
 from django import forms
-from .models import Professor
+from .models import Contato
 
-class ProfessorForm(forms.ModelForm):
+class ContatoForm(forms.ModelForm):
     class Meta:
-        model = Professor
-        fields = ['nome', 'atuacao']
+        model = Contato
+        fields = ['nome', 'email', 'mensagem','telefone']

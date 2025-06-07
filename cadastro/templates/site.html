@@ -1,389 +1,22 @@
-<!DOCTYPE html>
+{% load static %}
+
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instituto Família Paiva - Niterói/RJ</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #f39c12;
-            --light-color: #ecf0f1;
-            --dark-color: #34495e;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 60px;
-            margin-right: 15px;
-            border-radius: 100%;
-        }
-
-        .logo-text h1 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .logo-text p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-color);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #c0392b;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .programs {
-            background-color: white;
-        }
-
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .program-card {
-            background-color: var(--light-color);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .program-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .program-info {
-            padding: 20px;
-        }
-
-        .program-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .how-to-help {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .help-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .help-option {
-            text-align: center;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .help-option:hover {
-            transform: scale(1.05);
-        }
-
-        .help-option i {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .help-option h3 {
-            margin-bottom: 15px;
-        }
-
-        .contact {
-            background-color: white;
-        }
-
-        .contact-content {
-            display: flex;
-            gap: 40px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-        }
-
-        .contact-info i {
-            color: var(--accent-color);
-            margin-right: 10px;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .form-group textarea {
-            height: 150px;
-        }
-
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 40px 0 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-
-        .footer-column {
-            flex: 1;
-            padding: 0 20px;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav ul {
-                margin-top: 20px;
-                justify-content: center;
-            }
-
-            nav ul li {
-                margin: 0 10px;
-            }
-
-            .about-content, .contact-content {
-                flex-direction: column;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdWoHYfY_Ag0Ud7r-fYcN4JBwjCQiu2yS3BQ&s" alt="Logo Instituto Família Paiva">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdWoHYfY_Ag0Ud7r-fYcN4JBwjCQiu2yS3BQ&s"
+                        alt="Logo Instituto Família Paiva">
                     <div class="logo-text">
                         <h1>Instituto Família Paiva</h1>
                         <p>Transformando vidas em Niterói/RJ</p>
@@ -406,7 +39,8 @@
         <div class="container">
             <div class="hero-content">
                 <h2>Juntos transformando vidas em Niterói</h2>
-                <p>O Instituto Família Paiva atua há mais de 10 anos promovendo inclusão social, educação e desenvolvimento comunitário na região de Niterói/RJ.</p>
+                <p>O Instituto Família Paiva atua há mais de 10 anos promovendo inclusão social, educação e
+                    desenvolvimento comunitário na região de Niterói/RJ.</p>
                 <a href="#help" class="btn">Quero Ajudar</a>
             </div>
         </div>
@@ -419,12 +53,18 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Fundado em 2010, o Instituto Família Paiva é uma organização não governamental que atua em Niterói/RJ com o objetivo de promover o desenvolvimento social e a melhoria da qualidade de vida de famílias em situação de vulnerabilidade.</p>
-                    <p>Nossa missão é criar oportunidades por meio de programas de educação, capacitação profissional, assistência social e desenvolvimento comunitário, sempre com foco no fortalecimento dos vínculos familiares.</p>
-                    <p>Atuamos em diversas comunidades de Niterói, oferecendo suporte integral para crianças, jovens e adultos, com a convicção de que a transformação social começa dentro de cada lar.</p>
+                    <p>Fundado em 2010, o Instituto Família Paiva é uma organização não governamental que atua em
+                        Niterói/RJ com o objetivo de promover o desenvolvimento social e a melhoria da qualidade de vida
+                        de famílias em situação de vulnerabilidade.</p>
+                    <p>Nossa missão é criar oportunidades por meio de programas de educação, capacitação profissional,
+                        assistência social e desenvolvimento comunitário, sempre com foco no fortalecimento dos vínculos
+                        familiares.</p>
+                    <p>Atuamos em diversas comunidades de Niterói, oferecendo suporte integral para crianças, jovens e
+                        adultos, com a convicção de que a transformação social começa dentro de cada lar.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipe do Instituto Família Paiva">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Equipe do Instituto Família Paiva">
                 </div>
             </div>
         </div>
@@ -437,24 +77,30 @@
             </div>
             <div class="programs-grid">
                 <div class="program-card">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Educação Infantil">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Educação Infantil">
                     <div class="program-info">
                         <h3>Educação Infantil</h3>
-                        <p>Oferecemos educação complementar para crianças de 4 a 10 anos, com atividades lúdicas e pedagógicas que estimulam o desenvolvimento cognitivo e social.</p>
+                        <p>Oferecemos educação complementar para crianças de 4 a 10 anos, com atividades lúdicas e
+                            pedagógicas que estimulam o desenvolvimento cognitivo e social.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Capacitação Profissional">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Capacitação Profissional">
                     <div class="program-info">
                         <h3>Capacitação Profissional</h3>
-                        <p>Cursos profissionalizantes para jovens e adultos, com foco em inserção no mercado de trabalho e geração de renda para famílias carentes.</p>
+                        <p>Cursos profissionalizantes para jovens e adultos, com foco em inserção no mercado de trabalho
+                            e geração de renda para famílias carentes.</p>
                     </div>
                 </div>
                 <div class="program-card">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Apoio Psicossocial">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                        alt="Apoio Psicossocial">
                     <div class="program-info">
                         <h3>Apoio Psicossocial</h3>
-                        <p>Atendimento psicológico e social para famílias em situação de vulnerabilidade, com acompanhamento individualizado e grupal.</p>
+                        <p>Atendimento psicológico e social para famílias em situação de vulnerabilidade, com
+                            acompanhamento individualizado e grupal.</p>
                     </div>
                 </div>
             </div>
@@ -471,22 +117,25 @@
                     <i class="fas fa-hand-holding-usd"></i>
                     <h3>Doações Financeiras</h3>
                     <p>Sua contribuição financeira nos ajuda a manter e expandir nossos programas sociais.</p>
-                    <a href="#" class="btn" style="margin-top: 15px;">Doar Agora</a>
+                    <button href="#" class="btn" style="margin-top: 16px;">Doar Agora</button>
                 </div>
                 <div class="help-option">
                     <i class="fas fa-tshirt"></i>
                     <h3>Doações de Materiais</h3>
                     <p>Aceitamos doações de roupas, alimentos, materiais escolares e produtos de higiene.</p>
+                    <button href="#" class="btn" style="margin-top: 16px;">Doar Agora</button>
                 </div>
                 <div class="help-option">
                     <i class="fas fa-hands-helping"></i>
                     <h3>Trabalho Voluntário</h3>
                     <p>Seja um voluntário e doe seu tempo e talento para transformar vidas em Niterói.</p>
+                    <button href="#" class="btn" style="margin-top: 16px;">Doar Agora</button>
                 </div>
                 <div class="help-option">
                     <i class="fas fa-bullhorn"></i>
                     <h3>Divulgue Nossa Causa</h3>
                     <p>Acompanhe nossas redes sociais e compartilhe nosso trabalho com seus amigos.</p>
+                    <button href="#" class="btn" style="margin-top: 16px;">Doar Agora</button>
                 </div>
             </div>
         </div>
@@ -499,40 +148,52 @@
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Entre em Contato Conosco</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - Centro, Niterói/RJ</p>
-                    <p><i class="fas fa-phone"></i> (21) 1234-5678</p>
+                    <h3>Entre em Contato conosco</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Professor Roberto Lira, 2 - Maceió, Niterói/RJ</p>
+                    <p><i class="fas fa-phone"></i> (21) 99638-7453</p>
                     <p><i class="fas fa-envelope"></i> contato@familiapaiva.org.br</p>
-                    <p><i class="fas fa-clock"></i> Segunda a Sexta, das 9h às 17h</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta, das 9h às 18h</p>
 
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://m.facebook.com/profile.php?id=61551419461261"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/institutofamiliapaiva/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=5521996387453"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <input type="text" id="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
+                                <form method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div class="form-group">
+                        <label for="{{ form.nome.id_for_label }}">Nome</label>
+                        {{ form.nome }}
+                        {{ form.nome.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">E-mail</label>
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.telefone.id_for_label }}">Telefone</label>
+                        {{ form.telefone }}
+                        {{ form.telefone.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.mensagem.id_for_label }}">Mensagem</label>
+                        {{ form.mensagem }}
+                        {{ form.mensagem.errors }}
+                    </div>
+
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+
                 </div>
+
             </div>
         </div>
     </section>
@@ -542,12 +203,14 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Instituto Família Paiva</h3>
-                    <p>Transformando vidas através da educação, capacitação e apoio psicossocial em Niterói/RJ desde 2010.</p>
+                    <p>Transformando vidas através da educação, capacitação e apoio psicossocial em Niterói/RJ desde
+                        2010.</p>
                 </div>
-            <div class="copyright">
-                <p>&copy; 2025 Instituto Família Paiva. Todos os direitos reservados.</p>
+                <div class="copyright">
+                    <p>&copy; 2025 Instituto Família Paiva. Todos os direitos reservados.</p>
+                </div>
             </div>
-        </div>
     </footer>
 </body>
+
 </html>

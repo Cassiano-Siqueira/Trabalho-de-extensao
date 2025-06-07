@@ -1,16 +1,20 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse 
-from .forms import ProfessorForm
-from .models import Professor
+from .forms import ContatoForm
+from django.contrib import messages
 
 def home(request):
-    return HttpResponse('estou na home')
+    return render(request, 'site.html');
 
-def cadastro(request):
-    formulario = ProfessorForm(request.POST or None)
-    
-    if formulario .is_valid():
-        formulario.save()
-        return HttpResponse('professor cadastrado!') 
-    
-    return render(request, 'cadastro.html', {'form':formulario})
+def contato_view(request):
+   # print("request", request.POST)
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Mensagem enviada com sucesso!")
+            return redirect(request.path)  # Redireciona para evitar reenviar o formulário
+    else:
+        form = ContatoForm()
+
+    return render(request, 'site.html', {'form': form})  # Certifique-se que este é o nome correto do template
+
